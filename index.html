@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Valoração de PI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; padding-top: 50px; }
+    .card { border-radius: 10px; }
+    .step { font-weight: bold; font-size: 1.2rem; color: #0d6efd; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text-center mb-4">
+      <h1>Painel de Valoração de Ativos de Propriedade Intelectual</h1>
+      <p class="lead">Siga as etapas abaixo para simular o valor econômico do seu ativo.</p>
+    </div>
+    <form method="post">
+      <div class="card shadow p-4 mb-4">
+        <div class="step">1. Informações de Receita e Custo</div>
+        <div class="row mt-3">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Receita anual estimada (R$)</label>
+            <input type="text" name="receita" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Custo anual estimado (R$)</label>
+            <input type="text" name="custo" class="form-control" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow p-4 mb-4">
+        <div class="step">2. Projeção e Taxa</div>
+        <div class="row mt-3">
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Anos projetados</label>
+            <input type="number" name="anos" class="form-control" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Taxa de desconto (%)</label>
+            <input type="text" name="taxa" class="form-control" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Valor residual (R$)</label>
+            <input type="text" name="residual" class="form-control" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" type="submit">Calcular VPL</button>
+      </div>
+    </form>
+
+    {% if resultado is not none %}
+    <div class="alert alert-success text-center mt-4">
+      <h4>Valor Presente Líquido estimado:</h4>
+      <h2>R$ {{ resultado }}</h2>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
